@@ -12,5 +12,14 @@
     public class ProductListViewModel
     {
         public IEnumerable<ProductViewModel> Products { get; set; } = Enumerable.Empty<ProductViewModel>();
+        public PageInfo PageInfo { get; set; } = new();//null deger olmayacak
+    }
+
+    public class PageInfo//Pagenation links
+    {
+        public int TotalItems { get; set; } //Toplam sayfas sayisi
+        public int ItemsPerPage { get; set; } //her sayfada kac ürün olacak
+        public int TotalPages =>(int)Math.Ceiling((decimal)TotalItems/ItemsPerPage);
+        //Eger sonuc decimal deger ise Celing ile bir üst sayiya yuvarlaniyor. ve Sayfa sayisin tam sayi olarak cikiyor
     }
 }
